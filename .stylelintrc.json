@@ -1,0 +1,58 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-recommended-scss"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "color-hex-length": "short",
+    "color-function-notation": "modern",
+    "length-zero-no-unit": true,
+    "function-url-quotes": "always",
+    "scss/operator-no-unspaced": true,
+    "scss/operator-no-newline-after": true,
+    "function-calc-no-unspaced-operator": true,
+    "block-no-empty": true,
+    "scss/dollar-variable-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested", "after-dollar-variable", "after-comment"]
+      }
+    ],
+    "order/order": ["declarations", "at-rules", "rules"],
+    "order/properties-order": [
+      "position",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "z-index",
+      "display",
+      "flex-direction",
+      "flex-wrap",
+      "justify-content",
+      "align-items",
+      "gap",
+      "width",
+      "min-width",
+      "max-width",
+      "height",
+      "min-height",
+      "max-height",
+      "margin",
+      "padding",
+      "border",
+      "border-radius",
+      "box-shadow",
+      "background",
+      "background-color",
+      "background-image",
+      "color",
+      "font-size",
+      "font-weight",
+      "line-height",
+      "text-align",
+      "opacity",
+      "cursor",
+      "transition",
+      "transform"
+    ]
+  }
+}

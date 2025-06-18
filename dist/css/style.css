@@ -7,7 +7,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background-color: #f7f9fa;
   color: #9b9a99;
   min-height: 100vh;
@@ -59,7 +59,10 @@ body {
   cursor: pointer;
   border-radius: 50%;
   box-shadow: none;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease;
+  transition:
+    color 0.3s ease-in-out,
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease;
   user-select: none;
   outline: none;
   display: flex;
@@ -125,7 +128,8 @@ body {
   height: 100%;
   object-fit: contain;
 }
-.nav-arrow:focus, .nav-arrow:focus-visible {
+.nav-arrow:focus,
+.nav-arrow:focus-visible {
   outline: none;
   box-shadow: none;
   background-color: #e6f2ff;
@@ -256,7 +260,7 @@ body {
   position: absolute;
   width: 36px;
   height: 38px;
-  background-image: url("../../images/quote-icon.svg");
+  background-image: url('../../images/quote-icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -472,7 +476,9 @@ body {
   border-radius: 50%;
   background-color: #cccccc;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 .pagination__dot--active {
   background-color: #000000;

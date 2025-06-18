@@ -8,41 +8,23 @@
 
 html,
 body {
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Space Grotesk', sans-serif;
   background-color: $color-secondary-bg;
   color: $color-text;
-  min-height: 100vh;
-  width: 100%;
-  //overflow-x: hidden;
-  // height: 100%; // May be useful for full-screen blocks
-}
-
-.container {
-  max-width: 1440px;
-  width: 100%;
-  text-align: center;
-  padding: $spacing-md $spacing-xs; // 40px top/bottom, 20px left/right
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 0;
-  box-sizing: border-box;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .heading-primary {
-  font-size: 1.5em; // Base size for smallest screens (mobile-lg)
-  margin-bottom: 20px;
+  color: $color-primary;
+  font-size: 1.5em;
   text-align: center;
-  color: #000000;
+  margin-bottom: 20px;
 }
 
-// responsive mixin for larger screens
 @include responsive(tablet-sm) {
-  // min-width: 481px
   .heading-primary {
     font-size: 2em;
     margin-bottom: 40px;
@@ -50,15 +32,13 @@ body {
 }
 
 @include responsive(tablet-md) {
-  // min-width: 769px
   .heading-primary {
-    font-size: 2.5em; // Or some other value for tablet-md
+    font-size: 2.5em;
     margin-bottom: 50px;
   }
 }
 
 @include responsive(desktop-lg) {
-  // min-width: 993px
   .heading-primary {
     font-size: 3em;
     margin-bottom: 70px;

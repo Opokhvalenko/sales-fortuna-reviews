@@ -79,10 +79,3 @@ The carousel and its elements adapt to various screen sizes.
 ## License
 
 This project is licensed under the MIT License.
-
-## Contact
-
-Your Name / Team Name
-
-- **GitHub:** [GitHub Profile](https://github.com/Opokhvalenko)
-- **Email:** [email](mailto:oksanapokhvalenko@gmail.com)

@@ -11,41 +11,51 @@
 }
 
 @mixin arrow-styles {
-  background: $color-card-background;
   border: none;
-  cursor: pointer;
   border-radius: 50%;
-  box-shadow: $arrow-shadow;
+  cursor: pointer;
   transition:
     color 0.3s ease-in-out,
     transform 0.3s ease-in-out,
     background-color 0.3s ease;
+  box-sizing: border-box;
   user-select: none;
   outline: none;
-  @include flex-center;
-  box-sizing: border-box;
   flex-shrink: 0;
+
+  @include flex-center;
+}
+
+@mixin logo-style($height, $border-radius: null) {
+  display: block;
+  max-width: 100%;
+  height: $height;
+  object-fit: contain;
+
+  @if $border-radius {
+    border-radius: $border-radius;
+  }
 }
 
 @mixin responsive($breakpoint) {
   @if $breakpoint == desktop-xl {
-    @media (min-width: 1201px) {
+    @media (width >= 1201px) {
       @content;
     }
   } @else if $breakpoint == desktop-lg {
-    @media (min-width: 993px) {
+    @media (width >= 993px) {
       @content;
     }
   } @else if $breakpoint == tablet-md {
-    @media (min-width: 769px) {
+    @media (width >= 769px) {
       @content;
     }
   } @else if $breakpoint == tablet-sm {
-    @media (min-width: 481px) {
+    @media (width >= 481px) {
       @content;
     }
   } @else if $breakpoint == mobile-lg {
-    @media (max-width: 480px) {
+    @media (width <= 480px) {
       @content;
     }
   }

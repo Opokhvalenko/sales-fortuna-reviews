@@ -10,6 +10,8 @@
     "lint:fix": "eslint --ext .js --fix",
     "format": "prettier --write \"**/*.{js,json,css,scss,html,md}\"",
     "check-format": "prettier --check \"**/*.{js,json,css,scss,html,md}\"",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\"",
+    "stylelint:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
     "sass:compile": "sass src/scss/main.scss src/css/style.css",
     "sass:watch": "sass --watch src/scss/main.scss:src/css/style.css",
     "build": "npm run clean-dist && npm run sass:compile && npm run prepare-dist",
@@ -35,6 +37,11 @@
     "gh-pages": "^6.1.1",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
-    "sass": "^1.89.2"
+    "sass": "^1.89.2",
+    "stylelint": "^16.20.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.12.1"
   }
 }

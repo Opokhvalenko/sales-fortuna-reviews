@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+public/
+
+**/*.min.css
+**/*.min.scss
+**/*.bundle.css
+**/*.bundle.scss
+
+vendor/
+coverage/
+tmp/
+.temp/
+
+copied-sites/

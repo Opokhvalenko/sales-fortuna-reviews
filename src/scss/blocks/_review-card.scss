@@ -2,36 +2,83 @@
 @use '../variables' as *;
 
 .review-card {
-  background-color: $color-card-background;
-  border-radius: $border-radius-default;
-  @include card-shadow;
-  padding: $spacing-md $spacing-sm; // 40px top/bottom, 30px left/right
-  text-align: left;
-  width: $card-width;
-  height: 502px; // Fixed height for the entire card, as per Figma
-  box-sizing: border-box;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: start; // Distributes space
-  flex-shrink: 0;
+  justify-content: start;
+  width: 100%;
+  height: 502px;
+  padding: $spacing-md $spacing-sm;
   border: 1px solid #b6b1b1;
-  position: relative; // Crucial for positioning the quote icon relative to the card
-    box-shadow: 0px 8px 25px -8px rgba(0, 0, 0, 0.15);
-     transition: box-shadow 0.3s ease-in-out;
+  border-radius: $border-radius-default;
+  background-color: $color-card-background;
+  text-align: left;
+  transition: box-shadow 0.3s ease-in-out;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-grow: 1;
+
+  @include card-shadow;
+
+  @include responsive(mobile-lg) {
+    min-height: 200px;
+    padding: $spacing-xs; 
+    
+    .review-card__company-name,
+    .review-card__text,
+    .review-card__reviewer-name,
+    .review-card__reviewer-position {
+      font-size: 0.9em; 
+    }
+  }
+
+  @include responsive(tablet-sm) {
+    min-height: 450px;
+    padding: $spacing-xs $spacing-xs;
+    .review-card__company-name,
+    .review-card__text,
+    .review-card__reviewer-name,
+    .review-card__reviewer-position {
+      font-size: 0,9em;
+    }
+  }
+
+  @include responsive(tablet-md) {
+    width: $card-base-width;
+    max-width: $card-base-width;
+    height: 502px;
+    padding: $spacing-sm $spacing-xs;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    .review-card__company-name {
+      font-size: $font-size-company-name;
+    }
+    .review-card__text {
+      font-size: $font-size-review-text;
+    }
+    .review-card__reviewer-name {
+      font-size: $font-size-reviewer-name;
+    }
+    .review-card__reviewer-position {
+      font-size: $font-size-reviewer-position;
+    }
+  }
 
   @include responsive(desktop-lg) {
-    width: $card-width;
+    width: $card-base-width;
+    max-width: $card-base-width;
+    flex-shrink: 0;
+    flex-grow: 0;
     height: 502px;
   }
-  @include responsive(tablet-md) {
-    width: 100%;
-    max-width: $card-width;
-    padding: $spacing-sm $spacing-xs; // 30px top/bottom, 25px left/right
-  }
-  @include responsive(mobile-lg) {
-    width: 100%;
-    max-width: $card-width;
-    padding: $spacing-xs $spacing-xs;
+
+  @include responsive(desktop-xl) {
+    width: $card-base-width;
+    max-width: $card-base-width;
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 502px;
   }
 
   &__company-header {
@@ -41,105 +88,110 @@
     min-height: 91px;
   }
 
-  &__company-logo1 {
+  &__company-logo--1 {
     width: 157.34px;
-    height: 91px;
-    object-fit: contain;
-    margin-right: $spacing-xxs; // 15px
-    border-radius: 5px;
+    margin-right: $spacing-xxs;
+
+    @include logo-style(91px, 5px);
 
     @include responsive(mobile-lg) {
       width: 79px;
-      height: 45px;
       margin-right: 10px;
+
+      @include logo-style(45px, 5px);
     }
   }
 
-  &__company-logo2 {
+  &__company-logo--2 {
     width: 229.24px;
-    height: 44.67px;
-    object-fit: contain;
-    margin-right: $spacing-xxs; // 15px
-    border-radius: 5px;
+    margin-right: $spacing-xxs;
+
+    @include logo-style(44.67px, 5px);
 
     @include responsive(mobile-lg) {
       width: 114px;
-      height: 22px;
       margin-right: 10px;
+
+      @include logo-style(22px, 5px);
     }
   }
 
-  &__company-logo3 {
+  &__company-logo--3 {
     width: 272.37px;
-    height: 62px;
-    object-fit: contain;
-    margin-right: $spacing-xxs; // 15px
-    border-radius: 5px;
+    margin-right: $spacing-xxs;
+
+    @include logo-style(62px, 5px);
 
     @include responsive(mobile-lg) {
       width: 136px;
-      height: 31px;
       margin-right: 10px;
+
+      @include logo-style(31px, 5px);
     }
   }
 
   &__company-name {
-    color: $color-primary;
     margin: 0;
+    color: $color-primary;
     font-size: $font-size-company-name;
     font-weight: 700;
     line-height: 1.2;
     overflow: hidden;
-    text-overflow: ellipsis; // Optional: add ellipsis for truncated text
+    text-overflow: ellipsis;
+
     @include responsive(mobile-lg) {
       font-size: 1.1em;
     }
   }
 
   &__text {
-    font-size: $font-size-review-text; // 20px
-    line-height: 1.75; // 35px
-    margin-bottom: $spacing-xs; // 20px
-    flex-grow: 1;
-    color: $color-text;
     min-height: 100px;
-    padding-right: 15px; // Example, if quote icon overlaps text
+    color: $color-text;
+    font-size: $font-size-review-text;
+    line-height: 1.75;
+    margin-bottom: $spacing-xs;
+    flex-grow: 1;
+    padding-right: 15px;
     padding-bottom: 10px;
-    
 
     @include responsive(mobile-lg) {
       font-size: 1.1em;
       line-height: 1.6;
     }
   }
-    &__quote-icon {
+
+  &__quote-icon {
     position: absolute;
+    right: 30px;
+    bottom: 105px;
+    z-index: 0;
     width: $quote-width;
     height: $quote-height;
     background-image: url('../../images/quote-icon.svg');
+    opacity: 0.8;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.8;
-    z-index: 0; // Behind text
-    bottom: 105px;
-    right: 30px; 
 
     @include responsive(tablet-md) {
-      bottom: 115px;
       right: 30px;
+      bottom: 115px;
+      width: 25px;
+      height: 25px;
     }
+
     @include responsive(mobile-lg) {
-      bottom: 127px;
       right: 15px;
+      bottom: 127px;
+      width: 15px;
+      height: 15px;
     }
   }
- 
 
   &__reviewer-info {
     display: flex;
     align-items: center;
-    margin-top: $spacing-xxs; // 15px
+    margin-top: $spacing-xxs;
   }
 
   &__reviewer-photo {
@@ -155,6 +207,7 @@
       height: 60.49px;
       margin-right: 30px;
     }
+
     @include responsive(mobile-lg) {
       width: 40px;
       height: 40px;
@@ -162,7 +215,7 @@
   }
 
   &__reviewer-details {
-    display: flex;       
+    display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 90px;
@@ -170,34 +223,38 @@
 
   &__reviewer-name {
     margin: 0;
+    color: $color-primary;
     font-size: $font-size-reviewer-name;
     font-weight: 700;
-    color: $color-primary;
     line-height: 35px;
     letter-spacing: 0;
 
     @include responsive(tablet-sm) {
       font-size: 1.3em;
     }
+
     @include responsive(mobile-lg) {
       font-size: 1.1em;
+      line-height: 14px;
     }
   }
 
   &__reviewer-position {
+    max-width: 240px;
     margin: 0;
-    font-size: $font-size-reviewer-position;
     color: $color-primary;
+    font-size: $font-size-reviewer-position;
     font-weight: 500;
     line-height: 28px;
     letter-spacing: 0;
-    max-width: 200px;
 
     @include responsive(tablet-sm) {
       font-size: 1.1em;
     }
+
     @include responsive(mobile-lg) {
       font-size: 1em;
+      line-height: 14px;
     }
   }
 }

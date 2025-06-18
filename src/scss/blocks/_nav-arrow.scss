@@ -2,89 +2,51 @@
 @use '../variables' as *;
 
 .nav-arrow {
-  @include arrow-styles;
-  background: transparent;
-  z-index: 10; // Important: arrows should be ON TOP of cards
-
+  position: absolute;
+  top: 50%;
+  z-index: 10;
   width: $arrow-width-tablet-sm;
   height: $arrow-width-tablet-sm;
+  background: transparent;
+  transform: translateY(-50%);
+
+  @include arrow-styles;
 
   @include responsive(tablet-md) {
-    // min-width: 769px
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    width: $arrow-width-tablet-md; // 55px
-    height: $arrow-width-tablet-md; // 55px
-
-    // Arrows are positioned relative to reviews-section
-    &--left {
-      left: 0; // Align to the left padding of reviews-section
-    }
-    &--right {
-      right: 0; // Align to the right padding of reviews-section
-    }
+    width: $arrow-width-tablet-md;
+    height: $arrow-width-tablet-md;
   }
 
   @include responsive(desktop-lg) {
-    // min-width: 993px
-    width: $arrow-width-desktop; // 68px
-    height: $arrow-width-desktop; // 68px
-    // left/right remain 0, as reviews-section already has the necessary padding
-  }
-
-  @include responsive(desktop-xl) {
-    // min-width: 1201px
-    // width/height remain as for desktop-lg
+    width: $arrow-width-desktop;
+    height: $arrow-width-desktop;
   }
 
   &--left {
-    @include responsive(tablet-md) {
-      left: calc(
-        (
-            100% -
-              (
-                #{$card-min-width} + (2 * #{$arrow-width-tablet-md}) +
-                  (2 * #{$spacing-sm})
-              )
-          ) /
-          2
-      );
-      // This calculation positions the arrow relative to the entire reviews-section
-      // (100% width - total block width) / 2 gives the margin on each side
-      // Then it will be shifted by the required offset from the center
-      // It's simpler to use 0, and reviews-section will provide the padding
-      left: 0; // Positioning relative to reviews-section
-    }
+    left: 0;
   }
 
   &--right {
-    @include responsive(tablet-md) {
-      right: 0; // Positioning relative to reviews-section
-    }
+    right: 0;
   }
 
   &:hover {
     color: $color-arrow-hover;
     border-color: $color-arrow-hover;
-    transform: translateY(-50%) scale(1.1); // Important: keep translateY(-50%) on hover to prevent shifting!
+    transform: translateY(-50%) scale(1.1);
   }
 
   &[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
-    pointer-events: none; // Disable click events
-    // Important: keep translateY(-50%) on disabled if it was applied
-    @include responsive(tablet-md) {
-      transform: translateY(-50%);
-    }
+    pointer-events: none;
+    transform: translateY(-50%);
   }
 
-  // Styles for the arrow image inside the button
   & img {
     display: block;
-    width: 100%; // SVG should occupy the full available button width
-    height: 100%; // SVG should occupy the full available button height
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 
@@ -97,7 +59,7 @@
   }
 
   &:active {
-    transform: translateY(-50%) scale(0.95);
     box-shadow: none;
+    transform: translateY(-50%) scale(0.95);
   }
 }
