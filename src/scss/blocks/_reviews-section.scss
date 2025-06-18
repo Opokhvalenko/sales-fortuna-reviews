@@ -1,0 +1,162 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+.reviews-background-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-image: url(../images/fon1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  align-items: center;
+  padding: $spacing-lg 0;
+  box-sizing: border-box;
+}
+
+.reviews-section {
+  display: flex;
+  justify-content: center; // Center carousel within reviews-section
+  align-items: center; // Vertically align carousel (if it's the only element in the flow)
+  gap: $spacing-sm; // Spacing between arrows and carousel
+  position: relative; // Parent for absolutely positioned arrows
+  width: 100%; // Always 100% width of the parent container (reviews-background-container)
+  box-sizing: border-box;
+  margin: 0 auto; // Center the section
+  overflow: hidden; // Ensure content doesn't overflow
+
+  /// Base styles for mobile-lg (up to 480px)
+  flex-direction: column; // Arrows stacked vertically
+  gap: $spacing-xxs;
+  max-width: $card-min-width; // On mobile, reviews-section width limited to one card
+  padding: $spacing-xs 0; // Vertical padding
+
+  @include responsive(tablet-sm) {
+    // min-width: 481px (1 card)
+    // Keep column for tablet-sm if cards are still vertical
+    flex-direction: column; // Arrows stacked vertically
+    gap: $spacing-xxs;
+    max-width: $card-min-width; // Remain one card
+    padding: $spacing-xs 0;
+  }
+
+  @include responsive(tablet-md) {
+    // min-width: 769px (1 card, arrows on sides)
+    flex-direction: row; // Arrows on sides
+    // Reviews-section size calculated as carousel width + 2 arrow widths + 2 margins
+    max-width: calc(
+      #{$card-min-width} + (2 * #{$arrow-width-tablet-md}) +
+        (2 * #{$spacing-sm})
+    );
+    padding: 0 calc(#{$spacing-sm}); // Padding for spacing arrows from reviews-section content
+    gap: 0; // Gap no longer needed between carousel and arrows, as they are absolute
+  }
+
+  @include responsive(desktop-lg) {
+    // min-width: 993px (2 cards)
+    flex-direction: row;
+    max-width: calc(
+      (2 * #{$card-min-width} + 1 * #{$spacing-sm}) +
+        (2 * #{$arrow-width-desktop}) + (2 * #{$spacing-sm})
+    );
+    padding: 0 calc(#{$spacing-sm});
+    gap: 0;
+  }
+
+  @include responsive(desktop-xl) {
+    // min-width: 1201px (3 cards)
+    flex-direction: row;
+    max-width: calc(
+      (3 * #{$card-min-width} + 2 * #{$spacing-sm}) +
+        (2 * #{$arrow-width-desktop}) + (2 * #{$spacing-sm})
+    );
+    padding: 0 calc(#{$spacing-sm}); // Padding for spacing arrows from reviews-section content
+    gap: 0;
+  }
+}
+
+.reviews-carousel {
+  overflow: hidden; // Critical for hiding excess cards
+  position: relative;
+  padding: 10px 0; // For shadow
+  box-sizing: border-box;
+  width: 100%; // Carousel occupies full available width within reviews-section
+
+  // Base value for mobile-lg (up to 480px - 1 card)
+  // max-width here will effectively be limited by the parent reviews-section
+  padding: 5px 0;
+
+  @include responsive(tablet-sm) {
+    // min-width: 481px
+    padding: 10px 0;
+  }
+
+  @include responsive(tablet-md) {
+    // min-width: 769px
+    // max-width already controlled by reviews-section. This max-width is for the carousel itself.
+    max-width: $card-min-width; // Carousel shows 1 card
+  }
+
+  @include responsive(desktop-lg) {
+    // min-width: 993px
+    max-width: calc(
+      2 * #{$card-min-width} + 1 * #{$spacing-sm}
+    ); // Carousel shows 2 cards
+  }
+
+  @include responsive(desktop-xl) {
+    // min-width: 1201px
+    max-width: calc(
+      3 * #{$card-min-width} + 2 * #{$spacing-sm}
+    ); // Carousel shows 3 cards
+  }
+
+  &__track {
+    display: flex;
+    gap: $spacing-sm;
+    transition: transform $transition-speed $transition-cubic;
+    width: fit-content; // Allows the track to expand with content
+    box-sizing: border-box;
+
+    // Critical for card responsiveness within
+    .review-card {
+      flex: 0 0 auto; // Cards do not shrink or stretch
+      width: $card-min-width; // Base width
+    }
+  }
+}
+
+.pagination {
+  @include flex-center;
+  margin-top: $spacing-lg; // 60px
+  gap: 12px;
+
+  @include responsive(tablet-sm) {
+    margin-top: $spacing-sm; // 30px
+  }
+  @include responsive(mobile-lg) {
+    margin-top: $spacing-xs; // 20px
+    gap: 8px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $color-pagination-inactive;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
+
+    &--active {
+      background-color: $color-primary;
+      transform: scale(1.3);
+    }
+
+    @include responsive(mobile-lg) {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}

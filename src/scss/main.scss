@@ -1,0 +1,11 @@
+// Import variables and mixins first
+@use './variables' as *;
+@use './mixins' as *;
+
+// Import base styles
+@use './base';
+
+// Import all BEM blocks
+@use './blocks/nav-arrow';
+@use './blocks/review-card';
+@use './blocks/reviews-section';

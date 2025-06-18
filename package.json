@@ -1,0 +1,40 @@
+{
+  "name": "my-voices-of-success-with-sales-fortuna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "homepage": "https://opokhvalenko.github.io/sales-fortuna-reviews",
+  "scripts": {
+    "lint": "eslint --ext .js",
+    "lint:fix": "eslint --ext .js --fix",
+    "format": "prettier --write \"**/*.{js,json,css,scss,html,md}\"",
+    "check-format": "prettier --check \"**/*.{js,json,css,scss,html,md}\"",
+    "sass:compile": "sass src/scss/main.scss src/css/style.css",
+    "sass:watch": "sass --watch src/scss/main.scss:src/css/style.css",
+    "build": "npm run clean-dist && npm run sass:compile && npm run prepare-dist",
+    "copy-css": "mkdir dist\\src\\css 2>NUL && copy src\\css\\style.css dist\\src\\css\\style.css",
+    "copy-main-js": "npx cpy-cli \"src/js/script.js\" dist/src/js",
+    "copy-images": "npx cpy-cli \"images/**/*.{png,jpg,jpeg,svg,webp}\" dist/images --parents",
+    "copy-html": "npx cpy-cli index.html dist",
+    "prepare-dist": "npm run copy-css && npm run copy-main-js && npm run copy-images && npm run copy-html",
+    "clean-dist": "rimraf dist",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d dist",
+    "manual-deploy": "npm run build && git checkout --orphan gh-pages && git --work-tree dist add --all && git --work-tree dist commit -m \"Manual deploy\" && git push origin HEAD:gh-pages --force && git checkout main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^8.x.x",
+    "cpy-cli": "^5.0.0",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.5.0",
+    "gh-pages": "^6.1.1",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "sass": "^1.89.2"
+  }
+}
