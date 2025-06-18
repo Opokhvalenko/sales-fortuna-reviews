@@ -14,7 +14,7 @@
     "sass:watch": "sass --watch src/scss/main.scss:src/css/style.css",
     "build": "npm run clean-dist && npm run sass:compile && npm run prepare-dist",
     "copy-css": "mkdir dist\\css 2>NUL && copy src\\css\\style.css dist\\css\\style.css",
-    "copy-main-js": "mkdir dist\\js 2>NUL && copy src\\script.js dist\\js\\script.js",
+    "copy-main-js": "mkdir dist\\js 2>NUL && copy src\\script.js dist\\script.js",
     "copy-images": "mkdir dist\\images 2>NUL && xcopy /E /I src\\images dist\\images",
     "copy-html": "copy src\\index.html dist\\index.html",
     "prepare-dist": "npm run copy-css && npm run copy-main-js && npm run copy-images && npm run copy-html",
