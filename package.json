@@ -16,7 +16,7 @@
     "copy-css": "mkdir dist\\css 2>NUL && copy src\\css\\style.css dist\\css\\style.css",
     "copy-main-js": "mkdir dist\\js 2>NUL && npx cpy-cli \"src/script.js\" dist/js",
     "copy-images": "mkdir dist\\images 2>NUL && npx cpy-cli \"src/images/**/*.{png,jpg,jpeg,svg,webp}\" dist/images --parents",
-    "copy-html": "npx cpy-cli \"src/index.html\" dist/",
+    "copy-html": "npx cpy-cli \"src/index.html\" dist/html",
     "prepare-dist": "npm run copy-css && npm run copy-main-js && npm run copy-images && npm run copy-html",
     "clean-dist": "rimraf dist",
     "predeploy": "npm run build",
